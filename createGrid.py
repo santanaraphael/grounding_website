@@ -35,3 +35,4 @@ if __name__ == '__main__':
     grid1 = Grid(input_data)
     pprint(grid1.calc_max_values())
     print(grid1.size_conductor())
+    
