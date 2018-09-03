@@ -27,7 +27,12 @@ class Grid:
         conductor_section = self.FAULT_CURRENT/(226.53*math.sqrt((1/self.TRIP_TIME)*math.log10(
             ((self.MAXIMUM_TEMPERATURE-self.ROOM_TEMPERATURE)/(234+self.ROOM_TEMPERATURE))+1
         )))
-        return conductor_section
+        if conductor_section < 35:
+            real_section = 35
+        else:
+            real_section = conductor_section
+        return real_section
+
 
 if __name__ == '__main__':
     with open("input_data.json") as file:
@@ -35,4 +40,4 @@ if __name__ == '__main__':
     grid1 = Grid(input_data)
     pprint(grid1.calc_max_values())
     print(grid1.size_conductor())
-    
+
