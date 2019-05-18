@@ -209,23 +209,23 @@ def evaluate_case(case_info):
     return success, conduc_dia, total_length + rods_length, spacement, data
 
 case_info = {
-    'name': 'Example 1 - with lower trip time',
-    'trip_time' : 0.4,
+    'name': 'subestação gilbues ii',
+    'trip_time' : 0.25,
     'ground_ro' : 400,
     'gravel_ro' : 2500,
-    'gravel_depth' : 0.102,
-    'width' : 70,
-    'height' : 70,
-    'depth' : 0.5,
-    'spacement' : 7,
-    'if_ground_rods' : False,
-    'rods_length' : 0,
-    'rods_number' : 0,
-    'max_grid_current' : 1908,
-    'fault_current' : 6.814,
+    'gravel_depth' : 0.1,
+    'width' : 449,
+    'height' : 145.5,
+    'depth' : 0.6,
+    'spacement' : 8,
+    'if_ground_rods' : True,
+    'rods_length' : 198,
+    'rods_number' : 198,
+    'max_grid_current' : 23120,
+    'fault_current' : 40,
     'conductor_kf' : 7.06,
     'increment_step' : 0.5
 }
 
 
-evaluate_case(case_info)
+pprint(evaluate_case(case_info))
