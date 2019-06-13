@@ -24,7 +24,6 @@ urlpatterns = [
 ]
 
 urlpatterns += [
-    path('app/', include('grid_designer.urls')),
-    path('', RedirectView.as_view(url='/app/', permanent=True))
+    path('', include(('grid_designer.urls', 'grid_designer'), namespace='base'))
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
