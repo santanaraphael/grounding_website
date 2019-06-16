@@ -1,0 +1,18 @@
+{% extends "grid_designer/base.html" %}
+{% load crispy_forms_tags  %}
+{% block content %}
+<div class="content-section">
+  <form method="POST">
+    {% csrf_token %}
+    <field-set class="form-group">
+      <legend class="border-bottom mb-4">Project Design</legend>
+      <table>{{ form.as_table }}</table>
+      
+</fieldset>
+<div align='center'>
+	  <button class="btn btn-outline-info" type="submit">Design</button>
+	</div>
+</form>
+
+</div>
+{% endblock content %}
