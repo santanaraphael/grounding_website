@@ -5,3 +5,27 @@
   height: 400px;
 }
 
+img.center{
+  display: block;
+  margin: 0 auto;
+}
+
+div.LI-badge-container-vertical-dark {
+  margin: auto;
+  width: 100%;
+  padding: 10px;
+}
+div.center {
+  margin: auto;
+  width: 100%;
+  padding: 10px;
+}
+
+.big_box {
+  width: 500px;
+  text-align: center;
+   margin: 0 auto;
+}
+.box { width: 200px; float: left; margin: 3px; }
+.clear { clear: both }
+

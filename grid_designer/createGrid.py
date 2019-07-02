@@ -116,12 +116,12 @@ def eval_voltages(ground_rods, width, height, spacement, diameter, depth, ro, ig
 def evaluate_case(case_info):
     name = case_info['name']
     trip_time = case_info['trip_time']
-    ground_ro = case_info['ground_ro']
-    gravel_ro = case_info['gravel_ro']
+    ground_ro = case_info['ground_resistivity']
+    gravel_ro = case_info['gravel_resistivity']
     gravel_depth = case_info['gravel_depth']
-    width = case_info['width']
-    height = case_info['height']
-    depth = case_info['depth']
+    width = case_info['grid_depth']
+    height = case_info['grid_height']
+    depth = case_info['grid_width']
     spacement = case_info['spacement']
     if_ground_rods = case_info['if_ground_rods']
     rods_length = case_info['rods_length']
@@ -167,10 +167,12 @@ def evaluate_case(case_info):
                                                                              max_step))
             print('Decreasing the spacement from {} to {}'.format(spacement, spacement - increment_step))
 
-            spacement = spacement - increment_step
-            if spacement < 0.2:
+            
+            if spacement <= increment_step:
                 not_finished = False
                 print("Couldn't find a solution")
+            else:
+                spacement = spacement - increment_step
 
     max_touch_vector = []
     max_step_vector = []
@@ -204,9 +206,11 @@ def evaluate_case(case_info):
     draw_graph(data)
     fig = plt.gcf()
     fig.set_size_inches(15, 30)
-    fig.savefig('{}.png'.format(name), dpi=100)
+    dir_ = '/home/raphael/Projects/grounding/grid_designer'
+    path = '/static/imgs/{}.png'.format(name)
+    fig.savefig(dir_+path, dpi=100, bbox_inches='tight')
     plt.show()
-    return success, conduc_dia, total_length + rods_length, spacement, data
+    return success, path, conduc_dia, total_length + rods_length, spacement, data
 
 case_info = {
     'name': 'subestação gilbues ii',
@@ -226,6 +230,3 @@ case_info = {
     'conductor_kf' : 7.06,
     'increment_step' : 0.5
 }
-
-
-pprint(evaluate_case(case_info))

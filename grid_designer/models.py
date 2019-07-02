@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class GroundingMesh(models.Model):
+class GroundingMeshProject(models.Model):
     fault_current = models.FloatField()
     trip_time = models.FloatField()
     grid_depth = models.FloatField()
