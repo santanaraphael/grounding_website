@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import CreateView
 from .models import GroundingMeshProject
 from .forms import ProjectGrid
-from .createGrid import evaluate_case
+from grid_designer.domain.createGrid import evaluate_case
 
 # Create your views here.
 
