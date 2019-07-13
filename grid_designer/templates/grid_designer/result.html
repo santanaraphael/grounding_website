@@ -3,13 +3,22 @@
 <br>
 <br>
 <br>
-<h1 class='text-center'> Success! </h1>
+{% if success %}
+    <h1 class='text-center'> Success! </h1>
+{% else %}
+    <h1 class='text-center'> Failed! </h1>
+
+    <p class='text-center'>
+        Try increasing the number or length of grounding rods, rethink your gravel layer or reduce the trip time.
+    </p>
+{% endif %}
 
 <br>
 
 <h2 class='text-center'> 
     Conductor Diameter: {{conductor_diameter}}mm.
     Final Spacement: {{final_spacement}}m.
+    Grid Resistance: {{grid_resistance}} Ohms.
 </h2>
 <br>
 <h1 class='text-center'> See the charts below: </h1>
