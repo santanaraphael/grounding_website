@@ -105,4 +105,7 @@ venv.bak/
 
 # Spreadsheets
 .xlsx
+
+# Project Data
 *.example
+*.png
