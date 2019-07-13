@@ -105,3 +105,4 @@ venv.bak/
 
 # Spreadsheets
 .xlsx
+*.example
