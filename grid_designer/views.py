@@ -22,13 +22,13 @@ def project_grid(request):
         if form.is_valid():
             success, *data = evaluate_case(form.__dict__['cleaned_data'])
             context = {
+                'success': success,
                 'img_path': data[0],
                 'conductor_diameter': '{0:.2f}'.format(data[1]*1000),
-                'final_spacement': data[3]
+                'final_spacement': data[3],
+                'grid_resistance': '{0:.2f}'.format(data[5])
             }
-            if success:
-                return render(request, 'grid_designer/success.html', context)
-            return render(request, 'grid_designer/fail.html', context)
+            return render(request, 'grid_designer/result.html', context)
         
     else:
         form = ProjectGrid()

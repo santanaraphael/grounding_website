@@ -70,6 +70,7 @@ def eval_gpr(maximum_current, grid_resistance):
 
 
 def eval_voltages(ground_rods, width, height, spacement, diameter, depth, ro, ig, rods_length, rods_number):
+    
     horizontal_conductors = (height / spacement) + 1
     vertical_conductors = (width / spacement) + 1
     total_length = horizontal_conductors * width + vertical_conductors * height
@@ -119,9 +120,9 @@ def evaluate_case(case_info):
     ground_ro = case_info['ground_resistivity']
     gravel_ro = case_info['gravel_resistivity']
     gravel_depth = case_info['gravel_depth']
-    width = case_info['grid_depth']
+    width = case_info['grid_width']
     height = case_info['grid_height']
-    depth = case_info['grid_width']
+    depth = case_info['grid_depth']
     spacement = case_info['spacement']
     if_ground_rods = case_info['if_ground_rods']
     rods_length = case_info['rods_length']
@@ -146,6 +147,8 @@ def evaluate_case(case_info):
     while not_finished:
         grid_r = eval_grid_resistance(width, height, depth, spacement, ground_ro)
         gpr = eval_gpr(max_grid_current, grid_r)
+        print(if_ground_rods, width, height, spacement, conduc_dia, depth,
+                                                     ground_ro, max_grid_current, rods_length, rods_number)
         [mesh_voltage, step_voltage] = eval_voltages(if_ground_rods, width, height, spacement, conduc_dia, depth,
                                                      ground_ro, max_grid_current, rods_length, rods_number)
         gpr_array.append(gpr)
@@ -210,7 +213,7 @@ def evaluate_case(case_info):
     path = '/static/imgs/{}.png'.format(name)
     fig.savefig(dir_+path, dpi=100, bbox_inches='tight')
     plt.show()
-    return success, path, conduc_dia, total_length + rods_length, spacement, data
+    return success, path, conduc_dia, total_length + rods_length, spacement, data, grid_r
 
 case_info = {
     'name': 'subestação gilbues ii',
@@ -230,3 +233,6 @@ case_info = {
     'conductor_kf' : 7.06,
     'increment_step' : 0.5
 }
+
+print(eval_voltages(True, 70, 70, 7, 0.01, 0.5, 400, 1908, 150, 20))
+
