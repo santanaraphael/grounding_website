@@ -109,3 +109,6 @@ venv.bak/
 # Project Data
 *.example
 *.png
+
+# Vscode stuff
+*.vscode/
