@@ -1,4 +1,5 @@
 import math
+import matplotlib.pyplot as plt
 from grid_designer.application.graph_drawer import draw_graph
 
 
@@ -24,7 +25,7 @@ def calc_max_values_70(trip_time, ground_ro, gravel_ro, gravel_depth):
     return max_touch_voltage, max_step_voltage
 
 
-def evaluate_conductor_diamete(fault_current, kf, trip_time):
+def evaluate_conductor_diameter(fault_current, kf, trip_time):
     conductor_section_kcmil = fault_current * kf * math.sqrt(trip_time)
     conductor_section_mm = conductor_section_kcmil / 1.974
     diameter = (2 * math.sqrt(conductor_section_mm / math.pi)) / 1000
@@ -61,7 +62,7 @@ def evaluate_voltages(**kwargs):
     ro = kwargs.get('ro')
 
     ground_rods = kwargs.get('ground_rods')
-    rods_length = kwargs.get('rods_lengtind_rodh')
+    rods_length = kwargs.get('rods_length')
     rods_number = kwargs.get('rods_number')
 
     horizontal_conductors = (height / spacement) + 1

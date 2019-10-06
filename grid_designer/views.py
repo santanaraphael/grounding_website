@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import CreateView
 from .models import GroundingMeshProject
 from .forms import ProjectGrid
-from grid_designer.domain.calculate_grid import evaluate_case
+from grid_designer.domain.evaluate_grid import evaluate_case
 
 
 def index(request):
