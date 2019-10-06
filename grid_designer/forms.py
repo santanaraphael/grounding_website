@@ -2,16 +2,18 @@ from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Row, Column, Div, HTML
 
-class ProjectGrid(forms.Form): 
+
+class ProjectGrid(forms.Form):
+
     name = forms.CharField(label='Project Name', initial='My first Grounding project')
     fault_current = forms.FloatField(label='Fault current (kA)', initial=6.814, help_text="Enter the projects fault current.")
-    max_grid_current = forms.FloatField(label= 'Maximum grid current (A)', initial=1908, help_text='Enter the maximum current which will flow into the grid on faulty conditions.')
-    spacement = forms.FloatField(label= 'Initial Spacement (m)', initial=20, help_text="Enter the initial spacement for the simulation.") 
+    max_grid_current = forms.FloatField(label='Maximum grid current (A)', initial=1908, help_text='Enter the maximum current which will flow into the grid on faulty conditions.')
+    spacement = forms.FloatField(label='Initial Spacement (m)', initial=20, help_text="Enter the initial spacement for the simulation.")
     if_ground_rods = forms.BooleanField(label='Ground rods?', initial=False, help_text="Check this item if there are grounding rods stuck on the ground.", required=False)
     conductor_kf = forms.FloatField(label='Conductor KF', initial=7.06, help_text="Enter the conductor KF coefficient.")
     rods_length = forms.FloatField(label='Total rods length (m)', initial=0, help_text="Enter the total length of the rods stuck on the ground.")
-    rods_number = forms.IntegerField(label='Amount of ground rods', initial=0, help_text="Enter the total amount of ground rods.") 
-    increment_step = forms.FloatField(label='Increment step (m)', initial=0.5, help_text="Please enter the increment step for the simulation (a lower step means slower and more accurate results.).") 
+    rods_number = forms.IntegerField(label='Amount of ground rods', initial=0, help_text="Enter the total amount of ground rods.")
+    increment_step = forms.FloatField(label='Increment step (m)', initial=0.5, help_text="Please enter the increment step for the simulation (a lower step means slower and more accurate results.).")
     trip_time = forms.FloatField(label='Trip time (s)', initial=0.5, help_text="Enter the protection trip time for the project.")
     grid_depth = forms.FloatField(label='Grid depth (m)', initial=0.5, help_text="Enter the depth in which the grid will be buried in.")
     grid_height = forms.FloatField(label='Grid height (m)', initial=70, help_text="Enter the grid height.")
@@ -50,7 +52,6 @@ class ProjectGrid(forms.Form):
                 Column('rods_length', css_class='form-group col-md-3 mb-0'),
                 Column('rods_number', css_class='form-group col-md-3 mb-0'),
                 Column('increment_step', css_class='form-group col-md-3 mb-0'),
-                
                 css_class='form-row'
             ),
             HTML('<p class="h3 text-center"> Resistivity Data </p>'),
@@ -67,6 +68,7 @@ class ProjectGrid(forms.Form):
                 css_class='form-row'
             ),
             Div(
-            Submit('submit', 'Design!'),
-            css_class='text-center')
+                Submit('submit', 'Design!'),
+                css_class='text-center'
+            )
         )

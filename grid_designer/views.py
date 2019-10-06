@@ -2,18 +2,20 @@ from django.shortcuts import render
 from django.views.generic import CreateView
 from .models import GroundingMeshProject
 from .forms import ProjectGrid
-from grid_designer.domain.createGrid import evaluate_case
+from grid_designer.domain.calculate_grid import evaluate_case
 
-# Create your views here.
 
 def index(request):
     return render(request, 'grid_designer/index.html')
 
+
 def about(request):
     return render(request, 'grid_designer/about.html')
 
+
 def contact(request):
     return render(request, 'grid_designer/contact.html')
+
 
 def project_grid(request):
     if request.method == 'POST':
@@ -24,12 +26,12 @@ def project_grid(request):
             context = {
                 'success': success,
                 'img_path': data[0],
-                'conductor_diameter': '{0:.2f}'.format(data[1]*1000),
+                'conductor_diameter': '{0:.2f}'.format(data[1] * 1000),
                 'final_spacement': data[3],
                 'grid_resistance': '{0:.2f}'.format(data[5])
             }
             return render(request, 'grid_designer/result.html', context)
-        
+
     else:
         form = ProjectGrid()
 
